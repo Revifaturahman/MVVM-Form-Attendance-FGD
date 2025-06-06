@@ -1,4 +1,9 @@
 package com.example.mvvmformattendancefgd.view
+//
+//NAMA: REVI FATURAHMAN
+//NIM: 10122001
+//TANGGAL: 04-06-2025
+
 
 import android.os.Binder
 import android.os.Bundle
@@ -21,6 +26,5 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .replace(R.id.frame_container, InputFragment())
             .commit()
-
     }
 }

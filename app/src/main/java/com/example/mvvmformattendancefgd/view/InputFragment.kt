@@ -6,13 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import androidx.fragment.app.activityViewModels
 import com.example.mvvmformattendancefgd.R
 import com.example.mvvmformattendancefgd.databinding.FragmentInputBinding
 import com.example.mvvmformattendancefgd.model.AttedanceModel
+import com.example.mvvmformattendancefgd.viewmodel.AttadanceViewModel
 
 class InputFragment : Fragment() {
 
     private lateinit var binding: FragmentInputBinding
+
+    private val viewmodel: AttadanceViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,6 +38,7 @@ class InputFragment : Fragment() {
         }
 
 //        Pengambilan value
+        binding.btnSubmit.setOnClickListener {
         val model = AttedanceModel(
             name = binding.edtNama.text.toString(),
             noTlp = binding.edtTelefon.text.toString(),
@@ -47,8 +52,14 @@ class InputFragment : Fragment() {
                 if (binding.chkCriticalthinking.isChecked) "Critical Thinking" else null,
                 if (binding.chkProblemSolving.isChecked) "Problem Solving" else null
             )
-
         )
+
+        viewmodel.setAttadance(model)
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.frame_container, OutputFragment())
+            .addToBackStack(null)
+            .commit()
+        }
 
 
         return binding.root

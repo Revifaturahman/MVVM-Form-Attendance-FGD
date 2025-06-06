@@ -28,6 +28,6 @@
         <item>Akademis</item>
         <item>Media</item>
         <item>Politik</item>
-        <item>Pemerintahan</item>
+        <item><Pemerintahan></Pemerintahan></item>
     </string-array>
 </resources>
